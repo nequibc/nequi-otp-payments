@@ -9,7 +9,6 @@ Este servicio permite realizar la cancelación de un pago con OTP que se haya re
 - Se debe consumir mediante el método POST
 
 Las urls para el consumo del servicio son:
-
 - QA: [https://api.sandbox.nequi.com/otp-payments/v1/requestCancel](https://api.sandbox.nequi.com/otp-payments/v1/requestCancel)
 - PDN: [https://api.nequi.com/otp-payments/v1/requestCancel](https://api.nequi.com/otp-payments/v1/requestCancel)
 
@@ -25,7 +24,7 @@ Las urls para el consumo del servicio son:
 -- | -- | --
 | traceId | string | Identificador único de la transacción a cancelar |
 | code | string | Código del comercio formado por TIPO_ID. Para pruebas utilizar valor por defecto NIT_1 |
-| value | string | Valor de la transacción |
+| value | string | Valor pagado en la transacción a cancelar |
 
 ## Response
 
@@ -43,16 +42,16 @@ Las urls para el consumo del servicio son:
 | response | boolean | Indica si la transacción exitosa o fallida |
 | message | string | Mensaje del servicio |
 | messageDetail | string | Detalle de la operación |
-| verificationCode | string | Código de verificación de la transacción |
+| verificationCode | string | Código de verificación de la transacción, identificación de la cancelación realizada |
 
 ### Códigos de respuesta
 
-| **Código** | **Mensaje** | **Descripción** |
+| **Código HTTP** | **message** | **messageDetail** |
 | -- | -- | -- |
 | 200 | OK | La solicitud se ejecutó correctamente |
-| 400 | Bad Request | La solicitud no se puede procesar, problemas con la estructura de la solicitud o el saldo del cliente es insuficiente para realizar el pago |
+| 400 | Bad Request | La solicitud no se puede procesar, problemas con la estructura de la solicitud |
 | 403 | Access Denied |Consumo del servicio denegado para el comercio |
-| 404 | Not found | No se encuentra transacción asociada al traceId enviado|
+| 404 | Not found | No se encuentra transacción asociada al traceId enviado |
 | 500 | Internal server error | Se presentó una falla en la operación del servicio, no se pudo procesar la solicitud |
 
 Made with ♥ by [Nequi](https://nequi.com)

@@ -19,7 +19,8 @@ Las urls para el consumo del servicio son:
        "traceId": "99a2a169-6a3d-4d7e-80e4-7eb02948d2b2",
        "code": "NIT_1",
        "value": "10",
-       "token": "654321"
+       "token": "654321",
+       "terminalId": "5468"
     }
 
 | **Campo** | **Tipo** | **Descripción** |
@@ -27,7 +28,8 @@ Las urls para el consumo del servicio son:
 | traceId | string | Identificador único para trazabilidad |
 | code | string | Código del comercio formado por TIPO_ID. Para pruebas utilizar valor por defecto NIT_1 |
 | value | string | Valor de la transacción |
-| token | string | Código a validar |  
+| token | string | Código a validar |
+| terminalId | string | Campo opcional, hace referencia al identificador de la caja o terminal donde se realiza el pago |  
 
 ## Response
 
@@ -49,7 +51,7 @@ Las urls para el consumo del servicio son:
 
 ### Códigos de respuesta
 
-| **Código** | **Mensaje** | **Descripción** |
+| **Código HTTP** | **message** | **messageDetail** |
 | -- | -- | -- |
 | 200 | OK | La solicitud se ejecutó correctamente |
 | 400 | Bad Request |La solicitud no se puede procesar, problemas con la estructura de la solicitud o el saldo del cliente es insuficiente para realizar el pago |
